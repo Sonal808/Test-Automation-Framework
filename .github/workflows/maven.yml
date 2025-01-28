@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Running Test Auotomation framework with Maven
-      run:  mvn test -Dbrowser=chrome -DisLambdaTest=false -DisHeadless=true -X
+      run:  mvn test -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=true -X
 
     - name: Upload test logs
       if: always()
