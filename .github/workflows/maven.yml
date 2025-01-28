@@ -21,7 +21,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Running Test Auotomation framework with Maven
+    - name: Running Test Automation framework with Maven
       run:  mvn test -Dbrowser=chrome -DisLambdaTest=true -DisHeadless=true -X
 
     - name: Upload test logs
