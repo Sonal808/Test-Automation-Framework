@@ -55,8 +55,8 @@ public abstract class BrowserUtility {
         } else if (browserName == Browser.FIREFOX) {
             driver.set(new FirefoxDriver());
         } else {
-            logger.error("Invalid Browser name Please select Chrome or Edge Browser name");
-            System.err.print("Invalid Browser name Please select Chrome or Edge Browser name");
+            logger.error("Invalid Browser name Please select Chrome or Edge Browser name or Firefox");
+            System.err.print("Invalid Browser name Please select Chrome or Edge Browser name or Firefox");
         }
 
     }
@@ -93,14 +93,14 @@ public abstract class BrowserUtility {
                 driver.set(new FirefoxDriver());
             }
         } else {
-            logger.error("Invalid Browser name Please select Chrome or Edge Browser name");
-            System.err.print("Invalid Browser name Please select Chrome or Edge Browser name");
+            logger.error("Invalid Browser name or arguments Please select Chrome or Edge Browser or Firefox or headless");
+            System.err.print("Invalid Browser name or arguments Please select Chrome or Edge Browser or Firefox or headless");
         }
 
     }
 
     public void goToWebSite (String url) {
-        logger.info("Visiting the Website" + url);
+        logger.info("Visiting the Website{}", url);
         driver.get().get(url);
     }
 
@@ -111,21 +111,21 @@ public abstract class BrowserUtility {
 
     public void clickOn (By locator) {
 
-        logger.info("Finding the element with the locator" + locator);
+        logger.info("Finding the click element with the locator" + locator);
         WebElement element = driver.get().findElement(locator);// find the element
         logger.info("Element found and now performing click");
         element.click();
     }
 
     public void enterText (By locator, String textToEnter) {
-        logger.info("Finding the element with the locator" + locator);
+        logger.info("Finding the text element with the locator" + locator);
         WebElement element = driver.get().findElement(locator);
         logger.info("Element found and now enter text" + textToEnter);
         element.sendKeys(textToEnter);
     }
 
     public String getVisibleText (By locator) {
-        logger.info("Finding the element with the locator" + locator);
+        logger.info("Finding the visible text element with the locator" + locator);
         WebElement element = driver.get().findElement(locator);
         logger.info("Element found and now returning the visible" + element.getText());
         return element.getText();

@@ -5,7 +5,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import com.ui.pojo.User;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,13 +32,9 @@ public class CSVReaderUtility {
                 userData = new User(line[0], line[1]);
                 userList.add(userData);
             }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (CsvValidationException | IOException e) {
             throw new RuntimeException(e);
         }
-
         return userList.iterator();
     }
 }
