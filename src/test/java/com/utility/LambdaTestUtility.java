@@ -19,7 +19,7 @@ public class LambdaTestUtility {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", browser);
         capabilities.setCapability("browserVersion", "127");
-        Map<String, Object> ltOptions = new HashMap();
+        Map<String, Object> ltOptions = new HashMap<>();
         ltOptions.put("user", "sonalperera88");
         ltOptions.put("accessKey", "bEo6wHXzA1rqg41aOz03PMB1InJq5wnLbI07JjEcm7ifQXpxRC");
         ltOptions.put("build", "Selenium 4");
@@ -32,7 +32,8 @@ public class LambdaTestUtility {
 
         WebDriver driver = null;
         try {
-            driver = new RemoteWebDriver(new URL(HUB_URL), capabilitiesLocal.get());
+            driver = new RemoteWebDriver(new URL(HUB_URL),
+                    capabilitiesLocal.get());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -47,6 +48,4 @@ public class LambdaTestUtility {
             driverLocal.get().quit();
         }
     }
-
-
 }

@@ -32,7 +32,7 @@ public abstract class BrowserUtility {
 
     public BrowserUtility (String browserName) {
 
-        logger.info("Launching for" + browserName);
+        logger.info("Launching for%s".formatted(browserName));
         if (browserName.equalsIgnoreCase("chrome")) {
             driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("edge")) {
@@ -46,7 +46,7 @@ public abstract class BrowserUtility {
 
     public BrowserUtility (Browser browserName) {
 
-        logger.info("Launching for" + browserName);
+        logger.info("Launching for{}", browserName);
 
         if (browserName == Browser.CHROME) {
             driver.set(new ChromeDriver());
@@ -63,7 +63,7 @@ public abstract class BrowserUtility {
 
     public BrowserUtility (Browser browserName, boolean isHeadless) {
 
-        logger.info("Launching for" + browserName);
+        logger.info("Launching for%s".formatted(browserName));
 
         if (browserName == Browser.CHROME) {
             if (isHeadless){

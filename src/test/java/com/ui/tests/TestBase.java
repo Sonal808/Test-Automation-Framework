@@ -13,8 +13,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import static com.constants.Browser.CHROME;
-
 public class TestBase {
 
     protected HomePage homePage;

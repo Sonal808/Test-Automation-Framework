@@ -16,6 +16,7 @@ public class TestListener implements ITestListener {
 
     Logger logger = LoggerUtility.getLogger(this.getClass());
 
+    @Override
     public void onTestStart (ITestResult result) {
 
         logger.info(result.getMethod().getMethodName());
@@ -24,14 +25,16 @@ public class TestListener implements ITestListener {
         ExtentReporterUtility.createExtentTest(result.getMethod().getMethodName());
     }
 
+    @Override
     public void onTestSuccess (ITestResult result) {
 
-        logger.info(result.getMethod().getMethodName() + " " + "PASSED");
+        logger.info("{} PASSED", result.getMethod().getMethodName());
         ExtentReporterUtility.getTest().log(Status.PASS, result.getMethod().getMethodName());
     }
 
+    @Override
     public void onTestFailure (ITestResult result) {
-        logger.error(result.getMethod().getMethodName() + " " + "FAILED");
+        logger.error("{} FAILED", result.getMethod().getMethodName());
         logger.error(result.getThrowable().getMessage());
         ExtentReporterUtility.getTest().log(Status.FAIL, result.getMethod().getMethodName());
         ExtentReporterUtility.getTest().log(Status.FAIL, result.getThrowable().getMessage());
@@ -49,18 +52,21 @@ public class TestListener implements ITestListener {
 
     }
 
+    @Override
     public void onTestSkipped (ITestResult result) {
 
-        logger.warn(result.getMethod().getMethodName() + " " + "SKIPPED");
+        logger.warn("{} SKIPPED", result.getMethod().getMethodName());
         ExtentReporterUtility.getTest().log(Status.SKIP, result.getMethod().getMethodName());
     }
 
+    @Override
     public void onStart (ITestContext context) {
 
         logger.info("Test Suite started");
         ExtentReporterUtility.setupSparkReporter("report.html");
     }
 
+    @Override
     public void onFinish (ITestContext context) {
 
         logger.info("Test Suite Completed");
