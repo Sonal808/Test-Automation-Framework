@@ -17,32 +17,32 @@ import java.util.List;
 public class LoginDataProvider {
 
     @DataProvider(name = "LoginTestDataProvider")
-    public Iterator<Object[]> loginDataProvider() throws FileNotFoundException {
+    public Iterator<Object[]> loginDataProvider () throws FileNotFoundException {
         Gson gson = new Gson();
-       // File testDataFile = new File(System.getProperty("user.dir") + "\\testData\\loginData.json");
+        // File testDataFile = new File(System.getProperty("user.dir") + "\\testData\\loginData.json");
         File testDataFile = new File("./testData/loginData.json");
         FileReader fileReader = new FileReader(testDataFile);
         TestData data = gson.fromJson(fileReader, TestData.class); // deserialization
 
         List<Object[]> dataToReturn = new ArrayList<Object[]>();
 
-        for (User user: data.getData()){
-            dataToReturn.add(new Object[] {user});
+        for (User user : data.getData()) {
+            dataToReturn.add(new Object[]{user});
         }
         return dataToReturn.iterator();
 
     }
 
     @DataProvider(name = "LoginTestCSVDataProvider")
-    public Iterator<User> loginCSVDataProvider(){
+    public Iterator<User> loginCSVDataProvider () {
 
-       return CSVReaderUtility.readCSVFile("loginData.csv");
+        return CSVReaderUtility.readCSVFile("loginData.csv");
     }
 
     @DataProvider(name = "LoginTestExcelDataProvider")
-    public Iterator<User> loginExcelDataProvider(){
+    public Iterator<User> loginExcelDataProvider () {
 
-       return ExcelReaderUtility.readExcelFile("loginData.xlsx");
+        return ExcelReaderUtility.readExcelFile("loginData.xlsx");
     }
 
 }
